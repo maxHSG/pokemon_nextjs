@@ -31,15 +31,15 @@ interface PokemonListProps {
   data: Await<ReturnType<typeof getPokemons>> | undefined;
 }
 const PokemonList = ({ data }: PokemonListProps) => {
-  const pokemonState = useQuery([POKEMON_LIST], () => getPokemons(), {
-    initialData: data,
-    enabled: false,
-  });
+  // const pokemonState = useQuery([POKEMON_LIST], () => getPokemons(), {
+  //   initialData: data,
+  //   enabled: false,
+  // });
 
   return (
     <div className="container mx-auto pt-6 mb-6">
       <div className="grid md:grid-cols-4 sm:grid-cols-3 lg:grid-cols-6 gap-10 md:gap-4 ">
-        {pokemonState.data?.results.map((item) => {
+        {data?.results.map((item) => {
           return (
             <div
               key={item.id}
@@ -83,7 +83,7 @@ const PokemonList = ({ data }: PokemonListProps) => {
   );
 };
 
-export async function getServerSideProps(context: NextPageContext) {
+export async function getStaticProps(context: NextPageContext) {
   const data = await getPokemons();
 
   return {
