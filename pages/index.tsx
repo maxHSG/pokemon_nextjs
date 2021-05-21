@@ -35,6 +35,7 @@ interface PokemonListProps {
 const PokemonList = ({ data }: PokemonListProps) => {
   const pokemonState = useQuery([POKEMON_LIST], () => getPokemons(), {
     initialData: data,
+    enabled: false,
   });
 
   return (
@@ -48,9 +49,12 @@ const PokemonList = ({ data }: PokemonListProps) => {
             >
               <div className="border-b-2 border-gray-200 p-3 flex justify-center ">
                 {item.sprites.back_default ? (
-                  <img
+                  <Image
+                    width={176}
+                    height={176}
                     className="w-100 h-60 object-contain  "
                     src={item.sprites.back_default}
+                    alt={`Foto do ${item.name}`}
                   />
                 ) : null}
               </div>
@@ -91,18 +95,19 @@ export async function getServerSideProps(context: NextPageContext) {
 
 export default function Home(props: NextPage & PokemonListProps) {
   return (
-    <Layout>
+    <>
       <div className="flex justify-center bg-yellow-400 pb-52 pt-10">
-        <img
+        <Image
+          width={475}
+          height={175}
           className="h-auto w-1/3"
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1200px-International_Pok%C3%A9mon_logo.svg.png"
-          alt=""
+          alt="Logo da pagina do pokemon"
         />
       </div>
       <div className="-mt-36">
         <PokemonList data={props.data} />
       </div>
-      {/* <PokemonItem /> */}
-    </Layout>
+    </>
   );
 }
