@@ -3,8 +3,6 @@ import Image from "next/image";
 import { memo, useEffect } from "react";
 import { useQuery } from "react-query";
 import { getPokemons } from "../api/pokemons";
-import Layout from "../components/Layout";
-import PokemonItem from "../components/PokemonItem";
 import { POKEMON_LIST } from "../constants/queryCache";
 import {
   faArrowUp,
