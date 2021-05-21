@@ -97,13 +97,14 @@ export default function Home(props: NextPage & PokemonListProps) {
   return (
     <>
       <div className="flex justify-center bg-yellow-400 pb-52 pt-10">
-        <Image
-          width={475}
-          height={175}
-          className="h-auto w-1/3"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1200px-International_Pok%C3%A9mon_logo.svg.png"
-          alt="Logo da pagina do pokemon"
-        />
+        <div className="w-full relative h-24 sm:h-48">
+          <Image
+            layout="fill"
+            objectFit="contain"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1200px-International_Pok%C3%A9mon_logo.svg.png"
+            alt="Logo da pagina do pokemon"
+          />
+        </div>
       </div>
       <div className="-mt-36">
         <PokemonList data={props.data} />
